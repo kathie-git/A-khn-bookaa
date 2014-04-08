@@ -7,16 +7,12 @@
 	<!-- Project informational metadata -->
 	<context-param>
 		<param-name>appName</param-name>
-		<param-value>Book Manager</param-value>
+		<param-value>Library Manager</param-value>
 	</context-param>
 	<context-param>
-		<param-name>recipe</param-name>
-		<param-value>2.4</param-value>
-	</context-param>
-	<context-param>
-		<param-name>aboutThisRecipe</param-name>
+		<param-name>about</param-name>
 		<param-value><![CDATA[
-<p>Shows how to create a data access layer.</p>
+<p>Data access layer.</p>
 		]]></param-value>
 	</context-param>
 	

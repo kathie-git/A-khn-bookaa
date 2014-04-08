@@ -4,46 +4,48 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ include file="/WEB-INF/jsp/bookUrls.jspf" %>
+<%@ include file="/WEB-INF/jsp/urls.jspf" %>
 
 <c:url var="bookJsUrl" value="/scripts/books.js" />
-<c:url var="searchByEmailUrl" value="/contacts/search.html" />
+<c:url var="searchByBookUrl" value="/books/search.html" />
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title>Search results for e-mail like "<c:out value="${param.email}" />"</title>
-		<script type="text/javascript" src="${contactsJsUrl}"></script>
+		<title>Search results for books like "<c:out value="${param.name}" />"</title>
+		<script type="text/javascript" src="${booksJsUrl}"></script>
 	</head>
 	<body>
 		<ul id="breadcrumbs">
 			<li><a href="${homeUrl}">Home</a></li>
-			<li><a href="${contactListUrl}">Contacts</a></li>
+			<li><a href="${bookListUrl}">Books</a></li>
 		</ul>
 	
-		<h1>Search results for e-mail like "<c:out value="${param.email}" />"</h1>
+		<h1>Search results for books like "<c:out value="${param.name}" />"</h1>
 		
 		<c:choose>
-			<c:when test="${empty contactList}">
-				<p>No contacts found.</p>
+			<c:when test="${empty bookList}">
+				<p>No books found.</p>
 			</c:when>
 			<c:otherwise>
-				<table id="contactList" class="sortable">
+				<table id="bookList" class="sortable">
 					<thead>
 						<tr>
 							<th>Name</th>
-							<th>E-mail</th>
+							<th>Isbn</th>
+							<th>Author</th>
 							<th></th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="contact" items="${contactList}">
-							<c:url var="contactUrl" value="/contacts/${contact.id}.html" />
-							<tr id="contact-${contact.id}">
-								<td><span class="vcard icon"><a href="${contactUrl}">${contact.fullName}</a></span></td>
-								<td><c:if test="${not empty contact.email}"><span class="email icon"><a href="mailto:${contact.email}">${contact.email} </a></span></c:if></td>
+						<c:forEach var="book" items="${bookList}">
+							<c:url var="bookUrl" value="/books/${book.id}.html" />
+							<tr id="book-${book.id}">
+								<td><span class="vcard icon"><a href="${bookUrl}">${book.name}</a></span></td>
+								<td>${book.isbn}</td>
+								<td>${book.author}</td>
 								<td>
-									<span class="vcardDelete icon"><a class="deleteContact" href="#">Delete</a></span>
-									<form class="deleteForm" action="${contactUrl}" method="POST">
+									<span class="vcardDelete icon"><a class="deleteBook" href="#">Delete</a></span>
+									<form class="deleteForm" action="${bookUrl}" method="POST">
 										<input type="hidden" name="_method" value="DELETE" />
 									</form>
 								</td>
@@ -54,6 +56,6 @@
 			</c:otherwise>
 		</c:choose>
 		
-		<p>&laquo; Back to <a href="${contactListUrl}">contacts</a></p>
+		<p>&laquo; Back to <a href="${bookListUrl}">books</a></p>
 	</body>
 </html>

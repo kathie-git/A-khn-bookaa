@@ -53,6 +53,11 @@ pom.xml
 			<version>1.0-RELEASE</version>
 			<type>war</type>
 		</dependency>
+		<dependency>
+    		<groupId>joda-time</groupId>
+   			<artifactId>joda-time</artifactId>
+    		<version>2.3</version>
+		</dependency>
 		
 		<!-- For JDBC -->
 		<dependency>

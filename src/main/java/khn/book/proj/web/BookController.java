@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import khn.book.proj.bean.CustomPropertyEditorRegistrar;
 import khn.book.proj.model.Book;
 import khn.book.proj.service.BookService;
 
@@ -55,13 +56,15 @@ public class BookController {
 	private String bookSerpViewName;
 	
 	@InitBinder
+	/*public void initBinder(WebDataBinder binder) {*/
+		/*binder.findCustomEditor(requiredType, propertyPath)*/
 	public void initBinder(WebDataBinder binder) {
+		/*binder.registerCustomEditor(Date.class, new CustomDateEditor(dateWithFormatting, true, 10));*/
 		binder.setAllowedFields(new String[] {
-			"name", "isbn", "author"
-/*			"name", "isbn", "author", "publishDate"
-*/		});
+			/*"name", "isbn", "author"*/
+			"name", "isbn", "author", "publishDate"
+		});
 	}
-	
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public String createBookForm(HttpServletRequest req, Model model) {
 		prepareNewBookForm(req);

@@ -6,6 +6,7 @@
 package khn.book.proj.model;
 
 import java.util.Date;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,8 +21,6 @@ import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.springinpractice.util.StringUtils;
-
-import java.util.Date;
 
 /**
  * @author Kathie
@@ -38,7 +37,7 @@ public class Book  {
 	private String isbn;
     private String name;
     private String author;
-    /*private Date publishDate;*/
+    private Date publishDate;
     
     @Id
     @Column
@@ -80,15 +79,15 @@ public class Book  {
 		this.author = author;
 	}
 	
-	/*@NotNull*/
+	@Column
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	/*need JodaTime*/
-	/*@DateTimeFormat(pattern="dd/mm/yyyy")	*/
-	/*public Date getPublishDate() {
+	public Date getPublishDate() {
 		return publishDate;
-	}*/
-	/*@Column
+	}
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	public void setPublishDate(Date publishDate) {
 		this.publishDate = publishDate;
-	}*/
+	}
 }
 

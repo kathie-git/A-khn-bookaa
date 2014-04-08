@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"  %>
+xmlns:c="http://java.sun.com/jsf/core"
 <%@ include file="/WEB-INF/jsp/urls.jspf" %> 
 
 <c:url var="formAction" value="${requestScope.action}" />
@@ -19,7 +20,6 @@
 		</ul>
 			
 		<h1 class="vcard icon">Book details</h1>
-		
 		<form:form action="${formAction}" method="${requestScope.method}" modelAttribute="book" cssClass="main">
 			<form:errors>
 				<div class="warning"><form:errors /></div>
@@ -53,15 +53,19 @@
 						</form:errors>
 					</div>
 				</div>
-				<%-- <div class="gridRow yui-gf">
+				<div class="gridRow yui-gf">
+<%-- 			<fmt:formatDate var="publishDate" type="date" pattern="yyyy-MM-dd" value="publishDate"  --%>
 					<div class="fieldLabel yui-u first">Publish Date:</div>
 					<div class="yui-u">
-						<div><form:input path="publishDate" cssClass="medium" /></div>
+						<%-- <div><form:input path="publishDate" cssClass="medium" />
+						<fmt:formatDate value='publishDate' pattern='dd/MM/yyyy'  />
+						</div> --%>
+						<div><form:input path="publishDate" cssClass="medium" /></div> 
 						<form:errors path="publishDate">
 							<div class="errorMessage"><form:errors path="publishDate" /></div>
 						</form:errors>
 					</div>
-				</div> --%>
+				</div>
 				<div class="gridRow yui-gf">
 					<div class="yui-u first"></div>
 					<div class="yui-u">
