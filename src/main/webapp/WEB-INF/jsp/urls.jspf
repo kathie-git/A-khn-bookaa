@@ -1,0 +1,3 @@
+<c:url var="homeUrl" value="/" />
+<c:url var="bookListUrl" value="/books.html" />
+<c:url var="newBookUrl" value="/books/new.html" />
